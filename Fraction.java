@@ -48,4 +48,11 @@ public class Fraction {
 			System.out.println("Error: denominator cannot be zero");
 		}
 	}
+	//static method
+	public static Fraction mult (Fraction a, Fraction b){
+		int n = a.getNum() * b.getNum();
+		int d = a.getDenom() * b.getDenom();
+		Fraction product = new Fraction(n,d);
+		return product;
+	}  
 }

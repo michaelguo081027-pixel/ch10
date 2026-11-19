@@ -6,10 +6,13 @@ public class FractionDriver {
 		Fraction f2 = new Fraction(1,2);
 		Fraction half = new Fraction("1/2");
 		Fraction anotherHalf = new Fraction(half);
+		Fraction third = new Fraction(1,3);
+		Fraction product = Fraction.mult(half, third);
 		
 		System.out.println(f1);
 		System.out.println(f2);
 		System.out.println(half);
 		System.out.println(anotherHalf);
+		System.out.println(product);
 	}
 }
