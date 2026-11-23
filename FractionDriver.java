@@ -2,17 +2,21 @@ public class FractionDriver {
 	
 	public static void main (String[] args) {
 		
-		Fraction f1 = new Fraction();
-		Fraction f2 = new Fraction(1,2);
-		Fraction half = new Fraction("1/2");
-		Fraction anotherHalf = new Fraction(half);
+		Fraction fd = new Fraction();
+		Fraction halfi = new Fraction(1,2);
+		Fraction halfs = new Fraction("1/2");
+		Fraction halff = new Fraction(halfs);
 		Fraction third = new Fraction(1,3);
-		Fraction product = Fraction.mult(half, third);
+		Fraction product = Fraction.mult(halfi, third);
+		Fraction quotient = Fraction.div(halfi, third);
+		Fraction sum = Fraction.add(halfi, third);
 		
-		System.out.println(f1);
-		System.out.println(f2);
-		System.out.println(half);
-		System.out.println(anotherHalf);
+		System.out.println(fd);
+		System.out.println(halfi);
+		System.out.println(halfs);
+		System.out.println(halff);
 		System.out.println(product);
+		System.out.println(quotient);
+		System.out.println(sum);
 	}
 }

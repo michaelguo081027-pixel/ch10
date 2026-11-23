@@ -6,8 +6,8 @@ public class Fraction {
 		numerator = 1;
 		denominator = 1;
 	}
-	
-	public Fraction (int n, int d) {	//parameterized constructor
+	//parameterized constructor
+	public Fraction (int n, int d) {
 		setNum(n);
 		setDenom(d);
 	}
@@ -48,11 +48,41 @@ public class Fraction {
 			System.out.println("Error: denominator cannot be zero");
 		}
 	}
+	
+	public void reduce(int a, int b){
+		int c=a;
+		int d=b;
+		while(c!=d){
+			if(c>d)c=c-d;
+			else d=d-c;
+		}
+		denominator=c;
+	}
 	//static method
 	public static Fraction mult (Fraction a, Fraction b){
 		int n = a.getNum() * b.getNum();
 		int d = a.getDenom() * b.getDenom();
 		Fraction product = new Fraction(n,d);
 		return product;
-	}  
+	}
+	
+	public static Fraction div (Fraction a, Fraction b){
+		int n = a.getNum() * b.getDenom();
+		int d = a.getDenom() * b.getNum();
+		Fraction quotient = new Fraction(n,d);
+		return quotient;
+	}
+	
+	public static Fraction add (Fraction a, Fraction b){
+		int x=a.getNum();
+		int y=b.getNum();
+		int z=a.getDenom();
+		int k=b.getDenom();
+		reduce(z, k);
+		x=x*(denominator/z);
+		y=y*(denominator/k);
+		int n=x+y;
+		Fraction sum = new Fraction(n, denominator);
+		return sum;
+	}
 }
