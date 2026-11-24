@@ -36,6 +36,10 @@ public class Fraction {
 	public String toString() {
 		return numerator + "/" + denominator;
 	}
+	
+	public double toDouble() {
+		return numerator/denominator;
+	}
 	//mutator method
 	public void setNum(int n){
 		numerator = n;
@@ -56,7 +60,13 @@ public class Fraction {
 			if(c>d)c=c-d;
 			else d=d-c;
 		}
-		denominator=c;
+		if(c!=1||d!=1){
+			a=c;
+			b=d;
+		}else{
+			a=a*b;
+			b=a;
+		}
 	}
 	//static method
 	public static Fraction mult (Fraction a, Fraction b){
@@ -78,11 +88,16 @@ public class Fraction {
 		int y=b.getNum();
 		int z=a.getDenom();
 		int k=b.getDenom();
-		reduce(z, k);
-		x=x*(denominator/z);
-		y=y*(denominator/k);
-		int n=x+y;
-		Fraction sum = new Fraction(n, denominator);
+		Fraction sum = new Fraction();
+		sum.GCF(z, k);
+		sum.setDenom(z);
+		x=x*(sum.denominator/a.getNum());
+		y=y*(sum.denominator/b.getNum());
+		sum.numerator=x+y;
 		return sum;
+	}
+	//helper method
+	private void GCF(int a, int b){
+		reduce(a, b);
 	}
 }
