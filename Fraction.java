@@ -53,20 +53,12 @@ public class Fraction {
 		}
 	}
 	
-	public void reduce(int a, int b){
-		int c=a;
-		int d=b;
-		while(c!=d){
-			if(c>d)c=c-d;
-			else d=d-c;
-		}
-		if(c!=1||d!=1){
-			a=c;
-			b=d;
-		}else{
-			a=a*b;
-			b=a;
-		}
+	public void reduce(Fraction f){
+		int n=f.getNum();
+		int d=f.getDenom();
+		int g=GCF(f.getNum(), f.getDenom());
+		setNum(n/g);
+		setDenom(n/g);
 	}
 	//static method
 	public static Fraction mult (Fraction a, Fraction b){
@@ -89,15 +81,40 @@ public class Fraction {
 		int z=a.getDenom();
 		int k=b.getDenom();
 		Fraction sum = new Fraction();
-		sum.GCF(z, k);
-		sum.setDenom(z);
-		x=x*(sum.denominator/a.getNum());
-		y=y*(sum.denominator/b.getNum());
-		sum.numerator=x+y;
+		int d=sum.GCF(z, k);
+		sum.setDenom(d);
+		x=x*(d/a.getDenom());
+		y=y*(d/b.getDenom());
+		sum.setNum(x+y);
 		return sum;
 	}
+	
+	public static Fraction sub (Fraction a, Fraction b){
+		int x=a.getNum();
+		int y=b.getNum();
+		int z=a.getDenom();
+		int k=b.getDenom();
+		Fraction remaining = new Fraction();
+		int d=remaining.GCF(z, k);
+		remaining.setDenom(d);
+		x=x*(d/a.getDenom());
+		y=y*(d/b.getDenom());
+		remaining.setNum(x-y);
+		return remaining;
+	}
 	//helper method
-	private void GCF(int a, int b){
-		reduce(a, b);
+	private int GCF(int a, int b){
+		int c=a;
+		int d=b;
+		if(c==d)return c;
+		while(c!=d){
+			if(c>d)c=c-d;
+			else d=d-c;
+		}
+		if(c!=1||d!=1){
+			return c;
+		}else{
+			return a*b;
+		}
 	}
 }

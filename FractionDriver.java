@@ -10,6 +10,7 @@ public class FractionDriver {
 		Fraction product = Fraction.mult(halfi, third);
 		Fraction quotient = Fraction.div(halfi, third);
 		Fraction sum = Fraction.add(halfi, third);
+		Fraction remaining = Fraction.sub(halfi, third);
 		
 		System.out.println(fd);
 		System.out.println(halfi);
@@ -18,5 +19,6 @@ public class FractionDriver {
 		System.out.println(product);
 		System.out.println(quotient);
 		System.out.println(sum);
+		System.out.println(remaining);
 	}
 }
